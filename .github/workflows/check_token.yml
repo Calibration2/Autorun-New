@@ -1,0 +1,28 @@
+name: Check Smartsheet Token Expiry
+
+on:
+  schedule:
+    - cron: "0 1 * * *"  # รันทุกวันเวลา 08:00 ไทย (01:00 UTC)
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Install requests
+        run: pip install requests
+
+      - name: Run Token Checker
+        env:
+          SMARTSHEET_TOKEN: ${{ secrets.SMARTSHEET_TOKEN }}
+          TOKEN_CREATED_AT: ${{ secrets.TOKEN_CREATED_AT }}
+        run: python check_token_expiry.py
