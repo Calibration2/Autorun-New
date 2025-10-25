@@ -2,8 +2,8 @@ name: Run Smartsheet Auto
 
 on:
   schedule:
-    - cron: "0 1 25 10 *"   # Test Run
-  workflow_dispatch:       # อนุญาตให้กด Run ด้วยตัวเองได้ด้วย
+    - cron: "0 1 * * *"   # 🔁 รันทุกวันเวลา 08:00 ไทย (01:00 UTC)
+  workflow_dispatch:       # ✅ อนุญาตให้กด Run เองได้จากหน้า Actions
 
 jobs:
   run:
@@ -18,11 +18,11 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install dependencies (optional)
+      - name: Install dependencies
         run: |
           pip install smartsheet-python-sdk
 
       - name: Run Smartsheet script
         env:
-          ACCESS_TOKEN: ${{ secrets.SMARTSHEET_TOKEN }}
+          SMARTSHEET_TOKEN: ${{ secrets.SMARTSHEET_TOKEN }}
         run: python New.py
