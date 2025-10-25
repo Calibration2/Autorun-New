@@ -1,32 +1,27 @@
-# update trigger test
-
-name: Run Smartsheet Auto
+name: Run Smartsheet Script (Every Year on Oct 26)
 
 on:
   schedule:
-    # รันทุกปี วันที่ 26 ตุลาคม เวลา 09:00 (เวลาของ GitHub คือ UTC)
-    # ถ้าอยากให้ตรงเวลาไทย (GMT+7) ต้องตั้งเป็น 02:00 UTC
-    - cron: '0 2 26 10 *'   # <== หมายถึง 26 ตุลาคม ของทุกปี เวลา 02:00 UTC
-  workflow_dispatch:         # เพิ่มเพื่อให้กด "Run workflow" เองได้ด้วย
+    - cron: '0 2 26 10 *'  # ทุกปีวันที่ 26 ต.ค. เวลา 09:00 (ไทย)
+  workflow_dispatch:
 
 jobs:
-  run:
+  run-script:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: '3.11'
 
       - name: Install dependencies
-        run: |
-          pip install smartsheet-python-sdk
+        run: pip install smartsheet-python-sdk
 
       - name: Run Smartsheet script
         env:
-          SMARTSHEET_TOKEN: ${{ secrets.SMARTSHEET_TOKEN }}
+          SMARTSHEET_ACCESS_TOKEN: ${{ secrets.SMARTSHEET_ACCESS_TOKEN }}
         run: python New.py
