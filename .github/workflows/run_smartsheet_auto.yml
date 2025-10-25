@@ -1,8 +1,10 @@
+# update trigger test
+
 name: Run Smartsheet Auto
 
 on:
   schedule:
-    - cron: "*/5 * * * *"   # รันทุก 5 นาที
+    - cron: "*/1 * * * *"   # รันทุก 5 นาที
   workflow_dispatch:       # ✅ อนุญาตให้กด Run เองได้จากหน้า Actions
 
 jobs:
