@@ -4,8 +4,10 @@ name: Run Smartsheet Auto
 
 on:
   schedule:
-    - cron: "*/1 * * * *"   # รันทุก 5 นาที
-  workflow_dispatch:       # ✅ อนุญาตให้กด Run เองได้จากหน้า Actions
+    # รันทุกปี วันที่ 26 ตุลาคม เวลา 09:00 (เวลาของ GitHub คือ UTC)
+    # ถ้าอยากให้ตรงเวลาไทย (GMT+7) ต้องตั้งเป็น 02:00 UTC
+    - cron: '0 2 26 10 *'   # <== หมายถึง 26 ตุลาคม ของทุกปี เวลา 02:00 UTC
+  workflow_dispatch:         # เพิ่มเพื่อให้กด "Run workflow" เองได้ด้วย
 
 jobs:
   run:
