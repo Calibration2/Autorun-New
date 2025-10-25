@@ -1,3 +1,5 @@
+# Force reindex for schedule trigger
+
 name: Check Smartsheet Token Expiry
 
 on:
