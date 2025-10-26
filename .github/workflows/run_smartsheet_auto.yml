@@ -2,7 +2,7 @@ name: Run Smartsheet Script (Every Year on Oct 26)
 
 on:
   schedule:
-    - cron: '0 2 26 10 *'  # ทุกปีวันที่ 26 ต.ค. เวลา 09:00 (ไทย)
+    - cron: '0 0 * * *'  # Run ทุกวัน 07.00 น
   workflow_dispatch:
 
 jobs:
