@@ -4,7 +4,7 @@ name: Check Smartsheet Token Expiry
 
 on:
   schedule:
-    - cron: "0 1 * * *"  # รันทุกวันเวลา 08:00 ไทย (01:00 UTC)
+    - cron: "0 0 * * *"  # รันทุกวันเวลา 08:00 ไทย (01:00 UTC)
   workflow_dispatch:
 
 jobs:
