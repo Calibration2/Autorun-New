@@ -2,7 +2,7 @@ name: Run Smartsheet Script (Every Year on Oct 26)
 
 on:
   schedule:
-    - cron: '0 0 30 10 *'  # Run ทุกวันที่ 30 Oct 07.00 น
+    - cron: '0 0 1 1 *'  # Run ทุกวันที่ 1 Jan 07.00 น
   workflow_dispatch:
 
 jobs:
@@ -24,4 +24,4 @@ jobs:
       - name: Run Smartsheet script
         env:
           SMARTSHEET_ACCESS_TOKEN: ${{ secrets.SMARTSHEET_ACCESS_TOKEN }}
-        run: python New.py
+        run: python Test2.py
